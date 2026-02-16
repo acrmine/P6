@@ -18,7 +18,7 @@ def show_examples(count, scale=0.7):
             plt.subplot(len(categories),count,cpt)
             img = load_img(os.path.join(category_dir, filename), target_size=original_image_size)
             plt.imshow(img, cmap="gray")
-    plt.setp(plt.gcf().get_axes(), xticks=[], yticks=[]);
+    plt.setp(plt.gcf().get_axes(), xticks=[], yticks=[])
     plt.subplots_adjust(wspace=0.1, hspace=0.1)
     plt.show()
 

@@ -8,7 +8,7 @@ class BasicModel(Model):
     def _define_model(self, input_shape, categories_count):
         # Your code goes here
         # you have to initialize self.model to a keras model
-		self.model = keras.Sequential([
+        self.model = keras.Sequential([
 			layers.Conv2D(32, (3, 3), activation='relu', input_shape=input_shape),
 			layers.MaxPool2D((2, 2)),
 			layers.Flatten(),
@@ -18,4 +18,8 @@ class BasicModel(Model):
     def _compile_model(self):
         # Your code goes here
         # you have to compile the keras model, similar to the example in the writeup
-        pass
+        self.model.compile(
+            optimizer=Adam(learning_rate=0.001),
+            loss='categorical_crossentropy',
+            metrics=['accuracy'],
+        )
