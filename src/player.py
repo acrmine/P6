@@ -111,7 +111,7 @@ class UserWebcamPlayer:
         # The classification value should be 0, 1, or 2 for neutral, happy or surprise respectively
 
         # return an integer (0, 1 or 2), otherwise the code will throw an error
-        face_id_model = models.load_model('submissions/Step6/basic_model_100_epochs_timestamp_1771325387.keras')
+        face_id_model = models.load_model('submissions/Step6TicTacToe/basic_model_100_epochs_timestamp_1771398105.keras')
 
         resized_img = cv2.resize(img, image_size)
         full_img = np.repeat(resized_img[:, :, np.newaxis], 3, axis=2)

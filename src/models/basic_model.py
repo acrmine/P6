@@ -10,14 +10,14 @@ class BasicModel(Model):
         # you have to initialize self.model to a keras model
         self.model = keras.Sequential([
 			layers.Input(shape=input_shape),
-			layers.Rescaling(scale=1./255),
+			layers.Rescaling(scale=1. / 255),
 			layers.Conv2D(16, (3, 3), activation='relu'),
 			layers.MaxPool2D((2, 2)),
-            layers.Dropout(0.2),
-            layers.Conv2D(32, (3, 3), activation='relu'),
-            layers.MaxPool2D((2, 2)),
-            layers.Conv2D(64, (3, 3), activation='relu'),
-            layers.MaxPool2D((2, 2)),
+			layers.Conv2D(32, (3, 3), activation='relu'),
+			layers.MaxPool2D((2, 2)),
+			layers.Dropout(rate=0.2),
+			layers.Conv2D(32, (6, 6), activation='relu'),
+			layers.MaxPool2D((2, 2)),
 			layers.Flatten(),
 			layers.Dense(categories_count, activation='softmax'),
 		])
