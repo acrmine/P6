@@ -4,7 +4,7 @@ from keras.utils import load_img
 import matplotlib.pyplot as plt
 import os
 
-from config import original_image_size, train_directory, categories
+from config_transfer import original_image_size, train_directory, categories
 
 def show_examples(count, scale=0.7):
     base_dir = train_directory

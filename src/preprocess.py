@@ -1,5 +1,5 @@
 from keras.utils import image_dataset_from_directory
-from config import train_directory, test_directory, image_size, batch_size, validation_split
+from config_transfer import train_directory, test_directory, image_size, batch_size, validation_split
 
 def _split_data(train_directory, test_directory, batch_size, validation_split):
     print('train dataset:')
@@ -33,6 +33,7 @@ def get_datasets():
 def get_transfer_datasets():
     # Your code replaces this by loading the dataset
     # you can use image_dataset_from_directory, similar to how the _split_data function is using it
-    train_dataset, validation_dataset, test_dataset = None, None, None
+    train_dataset, validation_dataset, test_dataset = \
+        _split_data(train_directory, test_directory, batch_size, validation_split)
     # ...
     return train_dataset, validation_dataset, test_dataset
