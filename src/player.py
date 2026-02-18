@@ -1,5 +1,9 @@
+from tensorflow.python.ops.numpy_ops import newaxis
+
 from config import BOARD_SIZE, categories, image_size
 from tensorflow.keras import models
+import cv2
+import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 
@@ -107,8 +111,14 @@ class UserWebcamPlayer:
         # The classification value should be 0, 1, or 2 for neutral, happy or surprise respectively
 
         # return an integer (0, 1 or 2), otherwise the code will throw an error
-        return 1
-        pass
+        face_id_model = models.load_model('submissions/Step6/basic_model_100_epochs_timestamp_1771325387.keras')
+
+        resized_img = cv2.resize(img, image_size)
+        full_img = np.repeat(resized_img[:, :, np.newaxis], 3, axis=2)
+        full_img = full_img[np.newaxis, ...]
+        output = face_id_model.predict(full_img)
+
+        return int(np.argmax(output))
     
     def get_move(self, board_state):
         row, col = None, None
